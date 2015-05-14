@@ -10,11 +10,7 @@ RUN apt-get update && \
     apt-get -y clean && \
     apt-get -y autoclean
 
-RUN git config --global user.email "vvrantchan@whitbyschool.org"
-RUN git config --global user.name "Victor Vrantchan"
 
+COPY entrypoint.sh /entrypoint.sh
 VOLUME /certified/etc
-ENTRYPOINT /usr/local/bin/certified
-
-CMD [ '-h' ]
-
+ENTRYPOINT ["/bin/sh", "/entrypoint.sh"]
